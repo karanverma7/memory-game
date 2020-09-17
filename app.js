@@ -1,51 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const cardArray = [
-        {   
+        {  
             name: "Fruit1",
             img: 'images/f1.png'
         },
-        {   
+        {  
             name: "Fruit2",
             img: 'images/f2.png'
         },
-        {   
+        {  
             name: "Fruit3",
             img: 'images/f3.png'
         },
-        {   
+        {  
             name: "Fruit4",
             img: 'images/f4.png'
         },
-        {   
+        {  
             name: "Fruit5",
             img: 'images/f5.png'
         },
-        {   
+        {  
             name: "Fruit6",
             img: 'images/f6.png'
         },
-        {   
+        {  
             name: "Fruit1",
             img: 'images/f1.png'
         },
-        {   
+        {  
             name: "Fruit2",
             img: 'images/f2.png'
         },
-        {   
+        {  
             name: "Fruit3",
             img: 'images/f3.png'
         },
-        {   
+        {  
             name: "Fruit4",
             img: 'images/f4.png'
         },
-        {   
+        {  
             name: "Fruit5",
             img: 'images/f5.png'
         },
-        {   
+        {  
             name: "Fruit6",
             img: 'images/f6.png'
         }
@@ -53,12 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cardArray.sort(() => 0.5 - Math.random())
 
+    var modal = document.getElementById("myModal");
     const grid = document.querySelector('.grid')
     const result = document.querySelector('#result')
+    const gameEnd = document.querySelector('#gameEnd')
 
     var cardChosen = []
     var cardChosenId = []
     var cardsWon = []
+    var lives = 5
+
+    var help = document.querySelector('#help')
+
+    help.onclick = () => {
+        var guide = document.querySelector('#guide')
+        modal.style.display = "block"
+    }
 
     function createBoard() {
         for(let i = 0; i < cardArray.length; i++) {
@@ -68,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             card.setAttribute('data-id', i)
             grid.appendChild(card)
             card.addEventListener('click', flipCard)
-
         }
     }
 
@@ -85,17 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[option1].style.transform = 'rotateY(0deg)'
             cards[option2].setAttribute('src', 'images/hide.png')
             cards[option2].style.transform = 'rotateY(0deg)'
+           
+            if( lives != 1){
+                lives = lives - 1
+            }
+            else {
+                lives = 0
+                gameEnd.innerHTML = '<img src="images/man.png" height="60px" width="auto"><br> <h2>Game Over! Try Again <h2>'
+                modal.style.display = "block"
+                setTimeout( () => {
+                    window.location.reload()
+                }, 4000)
+            }
         }
 
         cardChosen = []
         cardChosenId = []
-        result.innerHTML = 'Score: ' + cardsWon.length
+        result.innerHTML = 'Lives: ' + lives
 
-        if(cardsWon.length === cardArray.length/2){
-            gameEnd = document.querySelector('#gameEnd')
-            gameEnd.innerHTML = 'Congratulations, You Found Them All!'
+        if(cardsWon.length == cardArray.length/2){
+            modal.style.display = "block"
+            gameEnd.innerHTML = '<img src="images/clap.png" height="50px" width="auto"><br> <h2> Congratulations!! You Found Them All. <h2> <span style="font-size: 10px"> (Click anywhere to exit) <span>'
         }
-
     }
 
     function flipCard() {
@@ -110,31 +130,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         this.style.transform = 'rotateY(180deg)'
         this.setAttribute('src', cardArray[cardId].img)        
-        
+       
         this.setAttribute
         if( cardChosen.length === 2){
             setTimeout(checkForMatch, 1300)
         }
     }
 
+    window.onclick = event => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          window.location.reload()
+        }
+      }
+
     createBoard()
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,15 +6,27 @@
     <link rel="stylesheet" href="style.css">
     <script src="app.js" charset="UTF-8"></script>
     <title>Memory Game</title>
-</head>
+</head> 
 <body>
     <div id="container">
         <div id="header">
             <img src="images/logo.png" alt="logo">
             <h2>Memory Game</h2>
-            <h3><span id="result">Score: 0</span></h3>
+            <img id="help" src="images/help.png" alt="help">
         </div>
-        <h2 id="gameEnd" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: ;"></h2>
+        <div id="myModal" class="modal">
+            <div id="gameEnd">
+                    <img id="help" src="images/help.png" alt="help" height="30px">
+                    <h3>How to Play</h3>
+                    <ul style="width: 220px; text-align: left; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 14px;">
+                        <li>There are 6 pairs of fruits hidden.</li>
+                        <li>Flip each card to find it's pair.</li>
+                        <li>Be careful, you have only 5 lives.</li>
+                    </ul>
+                    <p style="font-size: 13px;">(click anywhere to close the instructions.)</p>
+            </div>
+        </div>
+        <h3><span id="result">Lives: 5</span></h3>
         <div class="grid"></div>
         <footer>
             <p>&#169; 2020 Memory Game | Designed by Karan Verma </p>
