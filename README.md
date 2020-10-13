@@ -1,11 +1,11 @@
-#Memory Game
+# Memory Game
 
-##About the Project
+## About the Project
 
 A simple memory game built using JavaScript, responsive to large as well as small screens.
 Animations are added to give a flip effect when the cards are touched. Have fun playing it.
 
-##Getting Started
+## Getting Started
 
 To get a local copy of the project up and running, follow these simple steps:
 
@@ -19,9 +19,9 @@ git clone https://github.com/karanverma7/memory-game.git
 4. Open the html file with live server.
 5. It's that simple!
 
-##License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-##Contact
+## Contact
 Karan Verma (karanverma1601@gmail.com)
